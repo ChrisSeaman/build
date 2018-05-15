@@ -1,8 +1,32 @@
 pipeline {
       agent none
+    
       environment {
           NODE_VER = '8.1.0'
       }
+
+        // Post block
+        post {
+            // Don't have access to the workspace...  really just for notifications
+            // can also do success
+            success {
+                echo "Build is complete"
+            }
+        }
+
+        // Options block
+        // options {
+            // have to tell Jenkins when to checkout code
+            //skipDefaultCheckout()
+            //timeout(time: 1, unit: 'DAYS')
+        //}
+
+
+        // Tools block
+        // tools {
+            // Causes tool to be installed on the agent
+            //nodejs "${env.NODE_VER"
+        //}
 
       stages {
         stage('Beginning') { agent any
