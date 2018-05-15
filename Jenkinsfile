@@ -55,6 +55,7 @@ pipeline {
 
             when {
                 branch 'stage'
+                // branch 'PR-*'
                 // environment nmae: 'NODE_VER", value: '8.1.0'
                 // build tag, env variables, expressions, etc
                 // anyOf {
