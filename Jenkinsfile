@@ -1,3 +1,6 @@
+@library('shared-library')
+// use array syntax for multiple libraries
+
 pipeline {
       agent none
     
@@ -75,6 +78,7 @@ pipeline {
                 stage('Build 1') { agent any
                     steps {
                         echo "It's me!"
+                        hello()
                     }
                 }
                 stage('Build 2') { agent any
