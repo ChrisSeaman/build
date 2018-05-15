@@ -52,6 +52,15 @@ pipeline {
 
         stage('Deploy to stage?') { agent none
             // agent none is important if you want UI interaction
+
+            when {
+                branch 'stage'
+                // environment nmae: 'NODE_VER", value: '8.1.0'
+                // build tag, env variables, expressions, etc
+                // anyOf {
+                    //expressions...
+                //}
+            }
             steps {
                 input 'Deploy to staging?'
             }
