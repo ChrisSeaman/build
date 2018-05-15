@@ -25,5 +25,12 @@ pipeline {
                 sh 'host -t TXT pgp.michaelholley.us | awk -F \'"\' \'{print $2}\''
             }
         }
+
+        stage('Deploy to stage?') { agent none
+            // agent none is important if you want UI interaction
+            step {
+                input 'Deploy to staging?'
+            }
+        }
       }
 }
