@@ -28,7 +28,7 @@ pipeline {
 
         stage('Deploy to stage?') { agent none
             // agent none is important if you want UI interaction
-            step {
+            steps {
                 input 'Deploy to staging?'
             }
         }
