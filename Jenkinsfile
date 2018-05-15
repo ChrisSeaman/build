@@ -56,5 +56,23 @@ pipeline {
                 input 'Deploy to staging?'
             }
         }
+
+        stage('Parallel') { agent any
+            // If any one parallel instance fails, fail all
+            failFast true
+
+            parallel {
+                stage('Build 1') {
+                    steps {
+                        echo "It's me!"
+                    }
+                }
+                stage('Build 2') {
+                    steps {
+                        echo "Build #2"
+                    }
+                }
+            }
+        }
       }
 }
