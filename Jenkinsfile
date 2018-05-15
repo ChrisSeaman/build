@@ -7,18 +7,21 @@ pipeline {
       stages {
         stage('Beginning') { agent any
             environment {
-                NEW_VAR = 'Howdy'
+                DEPLOY_VERSION = 'stage'
             }
             steps {
                 echo 'Hello world'
                 sh 'echo $NODE_VER'
-                echo "${env.NEW_VAR}"
+                echo "${env.DEPLOY_VERSION}"
             }
         }
 
         stage('Who am I?') { agent any
+            environment {
+                DEPLOY_VERSION = 'prod'
+            }
             steps {
-                echo "${env.NEW_VAR}"
+                echo "${env.DEPLOY_VERSION}"
                 sh 'host -t TXT pgp.michaelholley.us | awk -F \'"\' \'{print $2}\''
             }
         }
