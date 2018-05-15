@@ -57,17 +57,17 @@ pipeline {
             }
         }
 
-        stage('Parallel') { agent any
+        stage('Parallel') {
             // If any one parallel instance fails, fail all
             failFast true
 
             parallel {
-                stage('Build 1') {
+                stage('Build 1') { agent any
                     steps {
                         echo "It's me!"
                     }
                 }
-                stage('Build 2') {
+                stage('Build 2') { agent any
                     steps {
                         echo "Build #2"
                     }
